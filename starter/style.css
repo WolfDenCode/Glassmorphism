@@ -1,8 +1,8 @@
 :root {
     --page-bg-one: #3A7BD5;
     --page-bg-two: #004F8C;
-    --holder-bg-one: #4C9FFF;
-    --holder-bg-two: #4187d7;
+    --holder-bg-one: rgba(76, 159, 255, 0.56);
+    --holder-bg-two: rgba(65, 135, 215, 0.66);
     --reference: rgb(133, 0, 167);
     --reference-hover: rgb(103, 0, 129);
     --white: #ffffff;
