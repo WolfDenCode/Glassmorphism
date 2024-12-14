@@ -1,0 +1,11 @@
+:root {
+    --page-bg-one: #3A7BD5;
+    --page-bg-two: #004F8C;
+    --holder-bg-one: #4C9FFF;
+    --holder-bg-two: #4187d7;
+    --reference: rgb(133, 0, 167);
+    --reference-hover: rgb(103, 0, 129);
+    --white: #ffffff;
+  }
+  
+/* Work After Root, Root has the necessary colors */
