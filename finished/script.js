@@ -29,10 +29,6 @@ function initializeIndicatorPosition() {
     .querySelector("svg use.icon-active")
     .classList.add("fill-animation-start");
 
-  // Set the indicator color
-  indicator.style.backgroundColor = "rgb(47, 140, 117)";
-  indicator.style.setProperty("--indicator", "#e2921a");
-
   // Reset the transition for future animations
   setTimeout(() => {
     indicator.style.transition = "0.3s ease-in-out";

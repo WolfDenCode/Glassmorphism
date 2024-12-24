@@ -99,6 +99,7 @@ label:hover {
   transition: 0.3s ease-in-out;
   border-radius: 50% 50% 0 0/100% 100% 0 0;
   transform-origin: center 20px;
+  background-color: rgb(47, 140, 117);
 }
 
 .indicator-animation {
@@ -137,27 +138,6 @@ label:hover {
   background-color: var(--white);
   transition: top 0.2s ease-in-out;
   opacity: 0;
-}
-
-.reference {
-  position: absolute;
-  align-self: flex-end;
-}
-
-a {
-  outline: none;
-  text-decoration: none;
-  color: var(--reference);
-}
-
-a:hover {
-  color: var(--reference-hover);
-}
-
-.test-page {
-  background-color: #ffffff;
-  width: 60%;
-  height: 80%;
 }
 
 @keyframes fill-animation {
