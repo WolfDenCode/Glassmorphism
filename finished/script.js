@@ -1,62 +1,86 @@
 const icons = document.querySelectorAll(".icon");
-
 const indicator = document.querySelector(".indicator");
+const indicatorDrop = document.querySelector(".indicator-drop");
 
-const indicator_drop = document.querySelector(".indicator-drop");
+let previousActiveLabel = null; // Track the previously active icon label
 
-icons.forEach((el) => el.addEventListener("click", clickIcon));
+// Set initial state without animations
+initializeIndicatorPosition();
 
-const active_icon = document.querySelector("input:checked + label");
-indicator.style.left = `${active_icon.offsetLeft + 12}px`;
-indicator.style.backgroundColor = "#004F8C";
-indicator.style.setProperty("--indicator", "#e2921a");
+// Attach event listeners to all icons
+icons.forEach((icon) =>
+  icon.addEventListener("click", updateIndicatorPosition)
+);
 
-indicator_drop.style.left = "31px";
-indicator_drop.style.top = "75px";
-indicator_drop.style.opacity = "0";
+function initializeIndicatorPosition() {
+  const activeIconLabel =
+    document.querySelector("input:checked + label") ||
+    icons[0].querySelector("label");
+  const { offsetLeft, offsetWidth } = activeIconLabel;
 
-function clickIcon() {
-  let active_icon = document.querySelector("input:checked + label");
-  indicator.style.left = `${active_icon.offsetLeft + 12}px`;
-  let active_icon_number = active_icon.getAttribute("for");
+  // Position the indicator without animation
+  indicator.style.transition = "none";
+  indicator.style.left = `${
+    offsetLeft + offsetWidth / 2 - indicator.offsetWidth / 2
+  }px`;
 
-  indicator.className = "indicator indicator-animation";
+  // Apply the fill animation state immediately
+  activeIconLabel
+    .querySelector("svg use.icon-active")
+    .classList.add("fill-animation-start");
 
+  // Set the indicator color
+  indicator.style.backgroundColor = "#004F8C";
+  indicator.style.setProperty("--indicator", "#e2921a");
+
+  // Reset the transition for future animations
   setTimeout(() => {
-    indicator_drop.style.top = "55px";
-    indicator_drop.style.left = `${active_icon.offsetLeft + 18}px`;
-    indicator_drop.style.opacity = "1";
-  }, 300);
+    indicator.style.transition = "0.3s ease-in-out";
+  });
+}
 
+function updateIndicatorPosition() {
+  const activeIconLabel = document.querySelector("input:checked + label");
+
+  if (!activeIconLabel || activeIconLabel === previousActiveLabel) return;
+
+  previousActiveLabel = activeIconLabel; // Update the active label reference
+
+  // Get the dimensions and position of the active icon
+  const { offsetLeft, offsetWidth } = activeIconLabel;
+
+  // Update indicator position
+  indicator.style.left = `${
+    offsetLeft + offsetWidth / 2 - indicator.offsetWidth / 2
+  }px`;
+  indicator.classList.add("indicator-animation");
+
+  // Animate the ball from the peak of the indicator
   setTimeout(() => {
-    indicator_drop.style.top = "75px";
-    indicator_drop.style.left = "31px";
-    indicator_drop.style.opacity = "0";
-  }, 500);
+    // Start the ball at the peak of the indicator
+    indicatorDrop.style.transition = "none";
+    indicatorDrop.style.transform = "translateY(30px)";
+    indicatorDrop.style.opacity = "1";
+    indicatorDrop.style.left = `${
+      offsetLeft + offsetWidth / 2 - indicatorDrop.offsetWidth / 2
+    }px`;
 
+    // Animate the ball towards the icon
+    setTimeout(() => {
+      indicatorDrop.style.transition =
+        "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-in-out";
+      indicatorDrop.style.transform = "translateY(0)";
+      indicatorDrop.style.opacity = "0";
+
+      // Trigger the icon's fill animation
+      activeIconLabel
+        .querySelector("svg use.icon-active")
+        .classList.add("fill-animation-start");
+    }, 50); // Small delay to ensure smooth animation start
+  }, 300); // Matches the indicator's animation duration
+
+  // Remove the indicator animation class to allow for new transitions
   setTimeout(() => {
-    indicator.className = "indicator";
-  }, 500);
-
-  switch (active_icon_number) {
-    case "icon-one":
-      indicator.style.backgroundColor = "#004F8C";
-      indicator.style.setProperty("--indicator", "#e18e1c");
-      break;
-    case "icon-two":
-      indicator.style.backgroundColor = "#004F8C";
-      indicator.style.setProperty("--indicator", "#e3911a");
-      break;
-    case "icon-three":
-      indicator.style.backgroundColor = "#004F8C";
-      indicator.style.setProperty("--indicator", "#e1921a");
-      break;
-    case "icon-four":
-      indicator.style.backgroundColor = "#004F8C";
-      indicator.style.setProperty("--indicator", "#e39519");
-      break;
-    default:
-      indicator.style.backgroundColor = "#004F8C";
-      indicator.style.setProperty("--indicator", "#e18e1c");
-  }
+    indicator.classList.remove("indicator-animation");
+  }, 300); // Matches the indicator's animation duration
 }
