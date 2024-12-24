@@ -1,11 +1,10 @@
 :root {
-    --page-bg-one: #3A7BD5;
-    --page-bg-two: #004F8C;
-    --holder-bg-one: rgba(76, 159, 255, 0.56);
-    --holder-bg-two: rgba(65, 135, 215, 0.66);
-    --reference: rgb(133, 0, 167);
-    --reference-hover: rgb(103, 0, 129);
-    --white: #ffffff;
-  }
-  
+  --page-bg-one: #1f8670;
+  --page-bg-two: #468fae;
+  --holder-bg-one: hsla(167, 62%, 32%, 0.571);
+  --holder-bg-two: rgba(70, 143, 174, 0.66);
+  --reference: rgb(133, 0, 167);
+  --reference-hover: rgb(103, 0, 129);
+  --white: #ffffff;
+}
 /* Work After Root, Root has the necessary colors */
