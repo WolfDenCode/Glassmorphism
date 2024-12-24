@@ -1,8 +1,8 @@
 :root {
-  --page-bg-one: #3a7bd5;
-  --page-bg-two: #004f8c;
-  --holder-bg-one: rgba(76, 159, 255, 0.56);
-  --holder-bg-two: rgba(65, 135, 215, 0.66);
+  --page-bg-one: #1f8670;
+  --page-bg-two: #468fae;
+  --holder-bg-one: hsla(167, 62%, 32%, 0.571);
+  --holder-bg-two: rgba(70, 143, 174, 0.66);
   --reference: rgb(133, 0, 167);
   --reference-hover: rgb(103, 0, 129);
   --white: #ffffff;
@@ -108,7 +108,7 @@ label:hover {
 .indicator::before {
   content: "";
   position: absolute;
-  border-right: 5px solid #004f8c;
+  border-right: 5px solid rgb(47, 140, 117);
   border-radius: 0% 35% 51% 0/0% 100% 78% 0;
   width: 18px;
   height: 16.5px;
@@ -120,7 +120,7 @@ label:hover {
 .indicator::after {
   content: "";
   position: absolute;
-  border-left: 5px solid #004f8c;
+  border-left: 5px solid rgb(47, 140, 117);
   border-radius: 35% 0% 0% 51%/100% 0% 0% 78%;
   width: 18px;
   height: 16.5px;

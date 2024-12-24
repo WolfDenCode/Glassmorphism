@@ -30,7 +30,7 @@ function initializeIndicatorPosition() {
     .classList.add("fill-animation-start");
 
   // Set the indicator color
-  indicator.style.backgroundColor = "#004F8C";
+  indicator.style.backgroundColor = "rgb(47, 140, 117)";
   indicator.style.setProperty("--indicator", "#e2921a");
 
   // Reset the transition for future animations
